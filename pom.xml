@@ -135,6 +135,25 @@
                 ...Additional dependencies may be placed here...
                 -->
             </dependencies>
+
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <name>Nexus Repository</name>
+                    <url>http://192.168.66.40:22081/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <!--更新策略默认从不更新-->
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <!--snapshots默认是关闭的,需要开启 -->
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <!--更新策略默认每天-->
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
         </profile>
 
         <profile>
@@ -320,10 +339,27 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-redis-ticket-registry</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.63</version>
         </dependency>
 
     </dependencies>
