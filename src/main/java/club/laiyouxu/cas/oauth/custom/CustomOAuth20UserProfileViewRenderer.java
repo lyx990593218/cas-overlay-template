@@ -22,6 +22,7 @@ public class CustomOAuth20UserProfileViewRenderer implements OAuth20UserProfileV
     @Override
     public String render(Map<String, Object> model, AccessToken accessToken) {
         try {
+            log.info("=======render==========");
             String userId = (String) model.get(ID);
             if (userId != null) {
                 return OAuth20Utils.jsonify(userService.findByUserName(userId));

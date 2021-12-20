@@ -36,6 +36,7 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
     @Override
     protected AuthenticationHandlerExecutionResult doAuthentication(Credential credential) throws GeneralSecurityException, PreventedException {
 
+        log.info("进来了");
         MyUsernamePasswordCredential myUsernamePasswordCredential = (MyUsernamePasswordCredential) credential;
         log.debug(myUsernamePasswordCredential.getPassword());
         //如果从数据库中根据用户和密码查出的用户id不为空则用户存在

@@ -1,6 +1,6 @@
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId" : "^(https|http|imaps)://.*",
+  "serviceId" : "^(https|http|imaps)://www.baidu.com.*",
   "name" : "HTTPS and HTTP and IMAPS",
   "id" : 10000001,
   "description" : "This service definition authorizes all application urls that support HTTPS and IMAPS protocols.",

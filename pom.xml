@@ -136,24 +136,24 @@
                 -->
             </dependencies>
 
-            <repositories>
-                <repository>
-                    <id>nexus</id>
-                    <name>Nexus Repository</name>
-                    <url>http://192.168.66.40:22081/repository/maven-public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                        <!--更新策略默认从不更新-->
-                        <updatePolicy>never</updatePolicy>
-                    </releases>
-                    <!--snapshots默认是关闭的,需要开启 -->
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <!--更新策略默认每天-->
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
+<!--            <repositories>-->
+<!--                <repository>-->
+<!--                    <id>nexus</id>-->
+<!--                    <name>Nexus Repository</name>-->
+<!--                    <url>http://192.168.66.40:22081/repository/maven-public/</url>-->
+<!--                    <releases>-->
+<!--                        <enabled>true</enabled>-->
+<!--                        &lt;!&ndash;更新策略默认从不更新&ndash;&gt;-->
+<!--                        <updatePolicy>never</updatePolicy>-->
+<!--                    </releases>-->
+<!--                    &lt;!&ndash;snapshots默认是关闭的,需要开启 &ndash;&gt;-->
+<!--                    <snapshots>-->
+<!--                        <enabled>true</enabled>-->
+<!--                        &lt;!&ndash;更新策略默认每天&ndash;&gt;-->
+<!--                        <updatePolicy>always</updatePolicy>-->
+<!--                    </snapshots>-->
+<!--                </repository>-->
+<!--            </repositories>-->
         </profile>
 
         <profile>
@@ -208,6 +208,14 @@
                     <scope>runtime</scope>
                 </dependency>
             </dependencies>
+
+<!--            <repositories>-->
+<!--                <repository>-->
+<!--                    <id>central</id>-->
+<!--                    <name>aliyun</name>-->
+<!--                    <url>https://maven.aliyun.com/nexus/content/groups/public/</url>-->
+<!--                </repository>-->
+<!--            </repositories>-->
         </profile>
 
         <profile>
@@ -278,19 +286,19 @@
 <!--            </exclusions>-->
 <!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-core-configuration</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apereo.cas</groupId>-->
+<!--            <artifactId>cas-server-support-rest</artifactId>-->
+<!--            <version>${cas.version}</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-support-rest</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apereo.cas</groupId>-->
+<!--            <artifactId>cas-server-support-rest-authentication</artifactId>-->
+<!--            <version>${cas.version}</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
@@ -314,28 +322,40 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--  oauth支持  -->
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-oauth-webflow</artifactId>
             <version>${cas.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-oauth</artifactId>
             <version>${cas.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-oauth-api</artifactId>
             <version>${cas.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-core-configuration-api</artifactId>
             <version>${cas.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-core-configuration</artifactId>
+            <version>${cas.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

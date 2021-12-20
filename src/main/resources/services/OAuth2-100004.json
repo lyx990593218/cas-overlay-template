@@ -1,14 +1,13 @@
 {
   "@class": "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
-  "clientId": "20180901",
-  "clientSecret": "123456",
+  "clientId": "20180902",
+  "clientSecret": "1234567",
   "bypassApprovalPrompt": false,
-  "serviceId": "^(https|http|imaps)://www.baidu.com.*",
+  "serviceId": "^(https|http|imaps)://www.google.com.*",
   "name": "OAuth2",
-  "id": 100003,
+  "id": 100004,
   "attributeReleasePolicy" : {
     "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
     "allowedAttributes" : [ "java.util.ArrayList", [ "name", "first_name", "middle_name" ] ]
-  },
-  "supportedGrantTypes": [ "java.util.HashSet", [ "password", "authorization_code", "client_credentials" ] ]
+  }
 }
