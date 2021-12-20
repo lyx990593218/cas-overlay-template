@@ -1,6 +1,7 @@
 package club.laiyouxu.cas.custom.handler;
 
 import club.laiyouxu.cas.custom.credential.MyUsernamePasswordCredential;
+import club.laiyouxu.cas.custom.exception.UsernameOrPasswordError;
 import lombok.extern.slf4j.Slf4j;
 import org.apereo.cas.authentication.AuthenticationHandlerExecutionResult;
 import org.apereo.cas.authentication.Credential;
@@ -36,12 +37,12 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
     protected AuthenticationHandlerExecutionResult doAuthentication(Credential credential) throws GeneralSecurityException, PreventedException {
 
         MyUsernamePasswordCredential myUsernamePasswordCredential = (MyUsernamePasswordCredential) credential;
-
+        log.debug(myUsernamePasswordCredential.getPassword());
         //如果从数据库中根据用户和密码查出的用户id不为空则用户存在
         if (!"laiyx".equals(myUsernamePasswordCredential.getUsername())
-                && !"laiyx".equals(myUsernamePasswordCredential.getPassword())){
+                && !"laiyx".equals(myUsernamePasswordCredential.getPassword())) {
             //登录失败抛出异常
-            throw new FailedLoginException("登录失败 ");
+            throw new UsernameOrPasswordError();
         }
         String userId = "1234567890";
 
