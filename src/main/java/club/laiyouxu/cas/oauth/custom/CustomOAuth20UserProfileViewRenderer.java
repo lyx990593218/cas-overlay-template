@@ -1,6 +1,6 @@
 package club.laiyouxu.cas.oauth.custom;
 
-import club.laiyouxu.cas.oauth.service.UserService;
+import club.laiyouxu.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apereo.cas.support.oauth.util.OAuth20Utils;
 import org.apereo.cas.support.oauth.web.views.OAuth20UserProfileViewRenderer;

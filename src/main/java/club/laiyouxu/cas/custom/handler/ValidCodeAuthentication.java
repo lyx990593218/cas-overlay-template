@@ -1,6 +1,6 @@
 package club.laiyouxu.cas.custom.handler;
 
-import club.laiyouxu.constants.KeyConstants;
+import club.laiyouxu.cas.constants.KeyConstants;
 import club.laiyouxu.cas.custom.credential.ValidCodeCredential;
 import club.laiyouxu.utils.SM3;
 import org.apache.commons.lang3.StringUtils;

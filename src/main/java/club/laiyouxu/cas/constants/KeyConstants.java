@@ -1,4 +1,4 @@
-package club.laiyouxu.constants;
+package club.laiyouxu.cas.constants;
 
 /**
  * @Description: key常量
