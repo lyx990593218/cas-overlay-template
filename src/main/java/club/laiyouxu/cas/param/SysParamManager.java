@@ -33,6 +33,7 @@ public class SysParamManager extends MultiParamService {
      * @author Beason Fang
      * @date 2021年9月8日 下午5:18:36
      */
+    @Override
     public Map<String, String> loadAllParam() {
         Map<String, String> configMap = new HashMap<>();
         configMap.put("maxErrNum", "10");

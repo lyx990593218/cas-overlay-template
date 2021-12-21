@@ -1,7 +1,7 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    club.laiyouxu.cas.custom.config.CustomCasCoreWebflowConfiguration,\
-    club.laiyouxu.cas.custom.config.CustomCasSupportActionConfiguration,\
-    club.laiyouxu.cas.custom.config.CustomCasWebflowContextConfiguration,\
-    club.laiyouxu.cas.oauth.config.CustomOAuthConfiguration,\
-    club.laiyouxu.cas.custom.captcha.config.CasCaptchaConfiguration
+  club.laiyouxu.cas.webflow.config.CustomCasCoreWebflowConfiguration,\
+  club.laiyouxu.cas.webflow.config.CustomCasCoreWebflowConfiguration.CustomCasWebflowContextConfiguration,\
+  club.laiyouxu.cas.captcha.config.CasCaptchaConfiguration,\
+  club.laiyouxu.cas.oauth.config.CustomOAuthConfiguration,\
+  club.laiyouxu.user.config.UserServiceConfig
 
