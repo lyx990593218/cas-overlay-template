@@ -78,14 +78,56 @@
                         <!-- 新增code 表单代码  -->
 
                         <section class="form-group">
-                            <label for="code">code...</label>
+                            <label for="validCode">validCode...</label>
 
                             <div>
                                 <input class="form-control required"
                                        type="text"
-                                       id="code"
+                                       id="validCode"
                                        size="25"
-                                       name="code"
+                                       name="validCode"
+                                       tabindex="2"
+                                       th:accesskey="#{screen.welcome.label.password.accesskey}"
+                                       autocomplete="off"/>
+                                <span id="capslock-on" style="display:none;">
+                                <p>
+                                    <i class="fa fa-exclamation-circle"></i>
+                                    <span th:utext="#{screen.capslock.on}"/>
+                                </p>
+                            </span>
+                            </div>
+                        </section>
+
+                        <section class="form-group">
+                            <label for="loginMethod">loginMethod...</label>
+
+                            <div>
+                                <input class="form-control required"
+                                       type="text"
+                                       id="loginMethod"
+                                       size="25"
+                                       name="loginMethod"
+                                       tabindex="2"
+                                       th:accesskey="#{screen.welcome.label.password.accesskey}"
+                                       autocomplete="off"/>
+                                <span id="capslock-on" style="display:none;">
+                                <p>
+                                    <i class="fa fa-exclamation-circle"></i>
+                                    <span th:utext="#{screen.capslock.on}"/>
+                                </p>
+                            </span>
+                            </div>
+                        </section>
+
+                        <section class="form-group">
+                            <label for="deviceId">deviceId...</label>
+
+                            <div>
+                                <input class="form-control required"
+                                       type="text"
+                                       id="deviceId"
+                                       size="25"
+                                       name="deviceId"
                                        tabindex="2"
                                        th:accesskey="#{screen.welcome.label.password.accesskey}"
                                        autocomplete="off"/>

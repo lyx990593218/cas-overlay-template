@@ -13,7 +13,9 @@
         <binder>
             <binding property="username" required="true"/>
             <binding property="password" required="true"/>
-            <binding property="code" required="true"/>
+            <binding property="validCode" required="true"/>
+            <binding property="loginMethod" required="true"/>
+            <binding property="deviceId" required="true"/>
         </binder>
         <transition on="submit" bind="true" validate="true" to="realSubmit" history="invalidate"/>
     </view-state>

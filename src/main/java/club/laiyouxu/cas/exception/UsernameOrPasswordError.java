@@ -1,4 +1,4 @@
-package club.laiyouxu.cas.custom.exception;
+package club.laiyouxu.cas.exception;
 
 import org.apereo.cas.authentication.AuthenticationException;
 

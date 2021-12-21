@@ -1,6 +1,9 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  club.laiyouxu.cas.param.config.ParamManagerConfig,\
+  club.laiyouxu.user.config.UserServiceConfig,\
+  club.laiyouxu.cas.custom.valid.Config.ValidServiceConfig,\
   club.laiyouxu.cas.custom.config.Config,\
   club.laiyouxu.cas.custom.config.CASWebFlowConfig,\
   club.laiyouxu.cas.oauth.config.CustomOAuthConfiguration,\
-  club.laiyouxu.cas.custom.configer.AuthenticationExceptionHandlerConfiger
+  club.laiyouxu.cas.custom.config.AuthenticationExceptionHandlerConfig
 
