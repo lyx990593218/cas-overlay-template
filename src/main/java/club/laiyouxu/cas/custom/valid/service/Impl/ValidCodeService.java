@@ -22,11 +22,11 @@ public class ValidCodeService implements ValidService {
 
     @Override
     public void valid(Credential credential) {
-        MyUsernamePasswordCredential myCredential = (MyUsernamePasswordCredential) credential;
-        String captcha = (String) redisTemplate.opsForValue().get(KeyConstants.CAPTCHA_KEY + myCredential.getDeviceId());
-        redisTemplate.delete(KeyConstants.CAPTCHA_KEY + myCredential.getDeviceId());
-        if (StringUtils.isBlank(myCredential.getValidCode()) || !myCredential.getValidCode().equals(captcha)) {
-            throw new ValidCodeError();
-        }
+//        MyUsernamePasswordCredential myCredential = (MyUsernamePasswordCredential) credential;
+//        String captcha = (String) redisTemplate.opsForValue().get(KeyConstants.CAPTCHA_KEY + myCredential.getDeviceId());
+//        redisTemplate.delete(KeyConstants.CAPTCHA_KEY + myCredential.getDeviceId());
+//        if (StringUtils.isBlank(myCredential.getValidCode()) || !myCredential.getValidCode().equals(captcha)) {
+//            throw new ValidCodeError();
+//        }
     }
 }

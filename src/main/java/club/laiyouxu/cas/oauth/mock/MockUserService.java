@@ -1,7 +1,7 @@
 package club.laiyouxu.cas.oauth.mock;
 
 
-import club.laiyouxu.cas.oauth.service.UserService;
+import club.laiyouxu.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashMap;
@@ -20,5 +20,10 @@ public class MockUserService implements UserService {
         hashMap.put("tel","18600000000");
         hashMap.put("region","china");
         return hashMap;
+    }
+
+    @Override
+    public void lockUser(String tenant, String userName) {
+
     }
 }

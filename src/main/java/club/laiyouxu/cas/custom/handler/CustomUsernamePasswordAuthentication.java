@@ -33,21 +33,16 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
 
     private UserService userService;
 
-    private ValidServiceAbstractFactory validServiceAbstractFactory;
-
-    private boolean isValid;
-
     private ParamManager paramManager;
 
     //UserMapper 为mybatis的 mapper 接口，在构造方法中手动赋值
     public CustomUsernamePasswordAuthentication(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order,
-                                                RedisTemplate redisTemplate, UserService userService, ValidServiceAbstractFactory validServiceAbstractFactory,
-                                                boolean isValid, ParamManager paramManager) {
+                                                RedisTemplate redisTemplate,
+                                                UserService userService,
+                                                ParamManager paramManager) {
         super(name, servicesManager, principalFactory, order);
         this.redisTemplate = redisTemplate;
         this.userService = userService;
-        this.validServiceAbstractFactory = validServiceAbstractFactory;
-        this.isValid = isValid;
         this.paramManager = paramManager;
     }
 
@@ -64,13 +59,8 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
     protected AuthenticationHandlerExecutionResult doAuthentication(Credential credential) throws GeneralSecurityException, PreventedException {
 
         MyUsernamePasswordCredential myUsernamePasswordCredential = (MyUsernamePasswordCredential) credential;
-        log.debug("====={}.", myUsernamePasswordCredential.getValidCode());
         log.debug(myUsernamePasswordCredential.getPassword());
 
-        if (isValid) {
-            ValidService validService = this.validServiceAbstractFactory.getValid(myUsernamePasswordCredential.getLoginMethod());
-            validService.valid(myUsernamePasswordCredential);
-        }
 
         //如果从数据库中根据用户和密码查出的用户id不为空则用户存在
         Map<String, Object> user = userService.findByUserName(myUsernamePasswordCredential.getUsername());

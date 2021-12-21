@@ -1,11 +1,14 @@
 package club.laiyouxu.cas.custom.config;
 
 import club.laiyouxu.cas.custom.credential.ValidCodeCredential;
-import club.laiyouxu.cas.custom.exception.UsernameOrPasswordError;
-import club.laiyouxu.cas.custom.exception.VerificationCodeError;
 import club.laiyouxu.cas.custom.handler.CustomUsernamePasswordAuthentication;
 import club.laiyouxu.cas.custom.handler.ValidCodeAuthentication;
 import club.laiyouxu.cas.custom.properties.CustomCasConfigurationProperties;
+import club.laiyouxu.cas.custom.valid.service.ValidServiceAbstractFactory;
+import club.laiyouxu.cas.exception.UsernameOrPasswordError;
+import club.laiyouxu.cas.exception.VerificationCodeError;
+import club.laiyouxu.cas.param.ParamManager;
+import club.laiyouxu.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apereo.cas.authentication.AuthenticationEventExecutionPlan;
 import org.apereo.cas.authentication.AuthenticationEventExecutionPlanConfigurer;
@@ -53,13 +56,27 @@ public class CustomCasCoreWebflowConfiguration extends CasCoreWebflowConfigurati
     @Qualifier("servicesManager")
     private ServicesManager servicesManager;
 
+
+    @Autowired
+    @Qualifier("redisTemplate")
+    RedisTemplate redisTemplate;
+    @Autowired
+    @Qualifier("userService")
+    UserService userService;
+    @Autowired
+    @Qualifier("paramManager")
+    private ParamManager paramManager;
+
     @Bean
     public AuthenticationHandler customUsernamePasswordAuthentication(){
         return new CustomUsernamePasswordAuthentication(
                 CustomUsernamePasswordAuthentication.class.getName(),
                 servicesManager,
                 new DefaultPrincipalFactory(),
-                1
+                1,
+                redisTemplate,
+                userService,
+                paramManager
         );
     }
 
