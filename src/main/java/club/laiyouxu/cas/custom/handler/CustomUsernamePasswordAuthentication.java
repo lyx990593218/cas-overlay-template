@@ -41,14 +41,14 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
         log.debug(myUsernamePasswordCredential.getPassword());
         //如果从数据库中根据用户和密码查出的用户id不为空则用户存在
         if (!"laiyx".equals(myUsernamePasswordCredential.getUsername())
-                && !"laiyx".equals(myUsernamePasswordCredential.getPassword())) {
+                || !"laiyx".equals(myUsernamePasswordCredential.getPassword())) {
             //登录失败抛出异常
             throw new UsernameOrPasswordError();
         }
         String userId = "1234567890";
 
         //验证code时候正确
-        if (userId != null && "code".equals(((MyUsernamePasswordCredential) credential).getCode())) {
+        if (userId != null) {
             List<MessageDescriptor> list = new ArrayList<>();
             return createHandlerResult(credential, this.principalFactory.createPrincipal(credential.getId()), list);
         }

@@ -134,26 +134,63 @@
                 <!--
                 ...Additional dependencies may be placed here...
                 -->
+
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-support-oauth-webflow</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-support-oauth</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-support-oauth-api</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-core-configuration-api</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-core-web-api</artifactId>
+                    <version>${cas.version}</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>jakarta.servlet</groupId>
+                    <artifactId>jakarta.servlet-api</artifactId>
+                    <version>4.0.3</version>
+                </dependency>
             </dependencies>
 
-<!--            <repositories>-->
-<!--                <repository>-->
-<!--                    <id>nexus</id>-->
-<!--                    <name>Nexus Repository</name>-->
-<!--                    <url>http://192.168.66.40:22081/repository/maven-public/</url>-->
-<!--                    <releases>-->
-<!--                        <enabled>true</enabled>-->
-<!--                        &lt;!&ndash;更新策略默认从不更新&ndash;&gt;-->
-<!--                        <updatePolicy>never</updatePolicy>-->
-<!--                    </releases>-->
-<!--                    &lt;!&ndash;snapshots默认是关闭的,需要开启 &ndash;&gt;-->
-<!--                    <snapshots>-->
-<!--                        <enabled>true</enabled>-->
-<!--                        &lt;!&ndash;更新策略默认每天&ndash;&gt;-->
-<!--                        <updatePolicy>always</updatePolicy>-->
-<!--                    </snapshots>-->
-<!--                </repository>-->
-<!--            </repositories>-->
+            <repositories>
+                <repository>
+                    <id>nexus</id>
+                    <name>Nexus Repository</name>
+                    <url>http://192.168.66.40:22081/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                        <!--更新策略默认从不更新-->
+                        <updatePolicy>never</updatePolicy>
+                    </releases>
+                    <!--snapshots默认是关闭的,需要开启 -->
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <!--更新策略默认每天-->
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
         </profile>
 
         <profile>
@@ -208,14 +245,6 @@
                     <scope>runtime</scope>
                 </dependency>
             </dependencies>
-
-<!--            <repositories>-->
-<!--                <repository>-->
-<!--                    <id>central</id>-->
-<!--                    <name>aliyun</name>-->
-<!--                    <url>https://maven.aliyun.com/nexus/content/groups/public/</url>-->
-<!--                </repository>-->
-<!--            </repositories>-->
         </profile>
 
         <profile>
@@ -274,31 +303,17 @@
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
         <!--引入Spring SPI机制 -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter</artifactId>-->
-<!--            <version>${springboot.version}</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.apereo.cas</groupId>-->
-<!--            <artifactId>cas-server-support-rest</artifactId>-->
-<!--            <version>${cas.version}</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.apereo.cas</groupId>-->
-<!--            <artifactId>cas-server-support-rest-authentication</artifactId>-->
-<!--            <version>${cas.version}</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
@@ -314,7 +329,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apereo.cas/cas-server-support-actions -->
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-actions</artifactId>
@@ -322,47 +336,20 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--  oauth支持  -->
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-support-oauth-webflow</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-support-oauth</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-support-oauth-api</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-core-configuration-api</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-core-configuration</artifactId>
-            <version>${cas.version}</version>
-            <scope>provided</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.apereo.cas</groupId>
             <artifactId>cas-server-support-redis-ticket-registry</artifactId>
             <version>${cas.version}</version>
+<!--            <scope>provided</scope>-->
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apereo.cas</groupId>-->
+<!--            <artifactId>cas-server-core-tickets</artifactId>-->
+<!--            <version>${cas.version}</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -376,10 +363,12 @@
             <artifactId>spring-data-redis</artifactId>
             <version>2.4.2</version>
         </dependency>
+
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.63</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
