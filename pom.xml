@@ -61,6 +61,7 @@
 
                                 <exclude>WEB-INF/classes/webflow/login/*.xml</exclude>
                                 <exclude>WEB-INF/classes/templates/fragments/loginform.html</exclude>
+                                <exclude>WEB-INF/classes/templates/casLoginView.html</exclude>
                             </excludes>
                         </overlay>
                     </overlays>
@@ -369,6 +370,24 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.63</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jhlabs</groupId>
+            <artifactId>filters</artifactId>
+            <version>2.0.235</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.17</version>
         </dependency>
 
     </dependencies>

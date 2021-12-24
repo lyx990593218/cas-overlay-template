@@ -1,5 +1,6 @@
 package club.laiyouxu.cas.webflow.configer;
 
+import club.laiyouxu.cas.webflow.credential.CustomPhoneNumCredential;
 import club.laiyouxu.cas.webflow.credential.CustomUsernamePasswordCredential;
 import club.laiyouxu.cas.webflow.properties.CustomCasConfigurationProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class CustomLoginWebflowConfiger extends AbstractCustomLoginWebflowConfig
             cfg.addBinding(new BinderConfiguration.Binding("rememberMe", (String)null, false));
         } else {
             this.createFlowVariable(flow, "credential", CustomUsernamePasswordCredential.class);
+            //this.createFlowVariable(flow, "credential2", CustomPhoneNumCredential.class);
         }
     }
 }

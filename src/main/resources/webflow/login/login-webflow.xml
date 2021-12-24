@@ -7,6 +7,7 @@
     <action-state id="initializeLoginForm">
         <evaluate expression="initializeLoginAction" />
         <transition on="success" to="viewLoginForm"/>
+<!--        <transition on="success" to="viewLoginForm2"/>-->
     </action-state>
 
     <view-state id="viewLoginForm" view="casLoginView" model="credential">
@@ -17,6 +18,14 @@
             <binding property="loginMethod" required="false"/>
             <binding property="deviceId" required="false"/>
             <binding property="recaptcha" required="false"/>
+        </binder>
+        <transition on="submit" bind="true" validate="true" to="realSubmit" history="invalidate"/>
+    </view-state>
+
+    <view-state id="viewLoginForm2" view="casLoginView" model="credential2">
+        <binder>
+            <binding property="phone" required="true"/>
+            <binding property="validCode" required="true"/>
         </binder>
         <transition on="submit" bind="true" validate="true" to="realSubmit" history="invalidate"/>
     </view-state>

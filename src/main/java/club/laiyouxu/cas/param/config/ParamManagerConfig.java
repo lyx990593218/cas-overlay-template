@@ -31,8 +31,8 @@ public class ParamManagerConfig {
     }
 
     @Bean
-    @ConditionalOnMissingBean(name = "defaultParamManager")
-    public ParamManager defaultParamManager(@Qualifier("defaultCache") Cache cache) {
+    @ConditionalOnMissingBean(name = "paramManager")
+    public ParamManager paramManager(@Qualifier("defaultCache") Cache cache) {
         SysParamManager paramManager = new SysParamManager(cache);
         //paramManager.setSysparamRemote(sysparamRemote);
         return paramManager;
