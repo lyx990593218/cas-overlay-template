@@ -1,6 +1,5 @@
 package club.laiyouxu.cas.webflow.configer;
 
-import club.laiyouxu.cas.webflow.credential.CustomPhoneNumCredential;
 import club.laiyouxu.cas.webflow.credential.CustomUsernamePasswordCredential;
 import club.laiyouxu.cas.webflow.properties.CustomCasConfigurationProperties;
 import lombok.extern.slf4j.Slf4j;

@@ -1,9 +1,7 @@
 package club.laiyouxu.cas.webflow.handler;
 
-import club.laiyouxu.cas.webflow.credential.CustomUsernamePasswordCredential;
 import club.laiyouxu.cas.exception.UsernameOrPasswordError;
-import club.laiyouxu.cas.param.ParamManager;
-import club.laiyouxu.cas.param.SysParamKey;
+import club.laiyouxu.cas.webflow.credential.CustomUsernamePasswordCredential;
 import club.laiyouxu.user.service.UserService;
 import club.laiyouxu.utils.SM3;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +18,7 @@ import javax.security.auth.login.AccountLockedException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -29,17 +28,13 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
 
     private UserService userService;
 
-    private ParamManager paramManager;
-
     //UserMapper 为mybatis的 mapper 接口，在构造方法中手动赋值
     public CustomUsernamePasswordAuthentication(String name, ServicesManager servicesManager, PrincipalFactory principalFactory, Integer order,
                                                 RedisTemplate redisTemplate,
-                                                UserService userService,
-                                                ParamManager paramManager) {
+                                                UserService userService) {
         super(name, servicesManager, principalFactory, order);
         this.redisTemplate = redisTemplate;
         this.userService = userService;
-        this.paramManager = paramManager;
     }
 
     //设置只支持验证 CustomUsernamePasswordCredential 类型的 Credential
@@ -65,16 +60,16 @@ public class CustomUsernamePasswordAuthentication extends AbstractPreAndPostProc
             throw new AccountLockedException();
         }
 
-        int maxErrNum = paramManager.getIntValue(SysParamKey.MAX_ERR_NUM.getValue());
-        int maxErrTime = paramManager.getIntValue(SysParamKey.MAX_ERR_TIME.getValue());
-        String maxLockTime = paramManager.getString(SysParamKey.MAX_LOCK_TIME.getValue());
+        int maxErrNum = 3;
+        int maxErrTime = 10;
+        int maxLockTime = 5;
         String redisKey = user.get("GmtTenant") + ":" + user.get("Username");
         Object limit = redisTemplate.opsForValue().get(redisKey);
 
         if (limit != null && Integer.parseInt(limit.toString()) >= maxErrNum) {
-            if (StringUtils.isNotBlank(maxLockTime) && Integer.parseInt(maxLockTime) > 0) {
+            if (Objects.nonNull(maxLockTime) && maxLockTime > 0) {
                 redisTemplate.opsForValue().set("Lock:" + redisKey, limit
-                        , Integer.parseInt(maxLockTime), TimeUnit.MINUTES);
+                        , maxLockTime, TimeUnit.MINUTES);
             } else {
                 userService.lockUser(user.get("GmtTenant").toString(), user.get("Username").toString());
             }

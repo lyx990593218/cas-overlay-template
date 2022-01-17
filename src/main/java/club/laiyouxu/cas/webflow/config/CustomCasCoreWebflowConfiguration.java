@@ -1,12 +1,10 @@
 package club.laiyouxu.cas.webflow.config;
 
-import club.laiyouxu.cas.webflow.configer.CustomLoginWebflowConfiger;
-import club.laiyouxu.cas.webflow.handler.CustomPhoneNumAuthentication;
-import club.laiyouxu.cas.webflow.handler.CustomUsernamePasswordAuthentication;
-import club.laiyouxu.cas.webflow.properties.CustomCasConfigurationProperties;
 import club.laiyouxu.cas.exception.UsernameOrPasswordError;
 import club.laiyouxu.cas.exception.VerificationCodeError;
-import club.laiyouxu.cas.param.ParamManager;
+import club.laiyouxu.cas.webflow.configer.CustomLoginWebflowConfiger;
+import club.laiyouxu.cas.webflow.handler.CustomUsernamePasswordAuthentication;
+import club.laiyouxu.cas.webflow.properties.CustomCasConfigurationProperties;
 import club.laiyouxu.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apereo.cas.authentication.AuthenticationEventExecutionPlan;
@@ -24,7 +22,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -68,10 +65,6 @@ public class CustomCasCoreWebflowConfiguration extends CasCoreWebflowConfigurati
     @Qualifier("userService")
     UserService userService;
 
-    @Autowired
-    @Qualifier("paramManager")
-    private ParamManager paramManager;
-
     @Bean
     public AuthenticationHandler customUsernamePasswordAuthentication() {
         return new CustomUsernamePasswordAuthentication(
@@ -80,24 +73,13 @@ public class CustomCasCoreWebflowConfiguration extends CasCoreWebflowConfigurati
                 new DefaultPrincipalFactory(),
                 1,
                 redisTemplate,
-                userService,
-                paramManager
+                userService
         );
-    }
-
-    @Bean
-    public AuthenticationHandler customPhoneNumAuthentication() {
-        return new CustomPhoneNumAuthentication(
-                CustomPhoneNumAuthentication.class.getName(),
-                servicesManager,
-                new DefaultPrincipalFactory(),
-                2);
     }
 
     @Override
     public void configureAuthenticationExecutionPlan(AuthenticationEventExecutionPlan plan) {
         plan.registerAuthenticationHandler(customUsernamePasswordAuthentication());
-        plan.registerAuthenticationHandler(customPhoneNumAuthentication());
     }
 
 

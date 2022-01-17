@@ -1,13 +1,11 @@
 package club.laiyouxu.cas.captcha;
 
 import club.laiyouxu.cas.captcha.properties.CaptchaProperties;
-import club.laiyouxu.cas.exception.ValidCodeError;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apereo.cas.web.support.WebUtils;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;

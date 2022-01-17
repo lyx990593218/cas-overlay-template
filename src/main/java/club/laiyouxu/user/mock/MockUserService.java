@@ -17,7 +17,7 @@ public class MockUserService implements UserService {
     public Map<String, Object> findByUserName(String username) {
         HashMap hashMap = new HashMap();
         hashMap.put("Username", "laiyx");
-        hashMap.put("Password", SM3.backEncrypt("laiyx"));
+//        hashMap.put("Password", SM3.backEncrypt("laiyx"));
         hashMap.put("tel", "18600000000");
         hashMap.put("region", "china");
         hashMap.put("GmtTenant", "china");
